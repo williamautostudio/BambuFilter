@@ -1,4 +1,4 @@
-# Air Filtration System – User Guide V1.0
+# Air Filtration System – User Guide
 
 ## Table of Contents
 - [Introduction](#introduction)  
@@ -51,7 +51,7 @@ This project is **fully open-source** and divided into three modular parts:
 
 #### 1.1 Printed Parts
 A total of **five 3D-printed components** are required.  
-All 3D models are published on **MakerWorld** — feel free to download and print them.  
+All 3D models are published on **MakerWorld** & **Github** — feel free to download and print them.  
 If you do not require the fan-control function, you may omit printing the control-board enclosure.
 
 ![Printed Parts](images/printed_parts.png)
@@ -120,14 +120,14 @@ Connect the fan directly to a **DC 24 V power source** for constant operation.
 You may either:
 
 - Solder an **IC socket** to the PCB and insert the ESP32 module, or  
-- Solder the **ESP32 directly** to the board for **ease of assembly**.
-
+- Solder the **ESP32 directly** to the board for **ease of assembly**.  
+[Gerber file](https://github.com/williamautostudio/BambuFilter/tree/main/pcba)
 ![PCB Layout](images/pcb_layout.png)
 
 ---
 
 ### 3. ESP32 Firmware
-Source code is available on **GitHub**.
+Source code is available on [**GitHub**.](https://github.com/williamautostudio/BambuFilter/tree/main/firmware)
 
 To build and upload the firmware:
 1. Use **VS Code** with **PlatformIO**.  
