@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(platformio run)",
+      "Bash(pio run:*)",
+      "Bash(C:Userswilli.platformiopenvScriptspio run)",
+      "Bash(/c/Users/willi/.platformio/penv/Scripts/pio run:*)",
+      "Bash(\"C:\\Users\\willi\\.platformio\\penv\\Scripts\\pio.exe\" system prune:*)",
+      "Bash(\"C:\\Users\\willi\\.platformio\\penv\\Scripts\\pio.exe\" pkg:*)",
+      "Bash(\"C:\\Users\\willi\\.platformio\\penv\\Scripts\\pio.exe\" pkg install:*)",
+      "Bash(platformio lib search:*)",
+      "Bash(C:\\Users\\willi\\.platformio\\penv\\Scripts\\pio.exe lib search:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
