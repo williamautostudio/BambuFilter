@@ -116,10 +116,18 @@ WiFiManagerParameter custom_mqtt_state_topic ("statetopic",  "MQTT State Topic (
 WiFiManagerParameter custom_mqtt_status_topic("statustopic", "MQTT Status Topic (max 100)",  "", MQTT_TOPIC_PARAM_LEN);
 
 // ========= PWM / Fan runtime =========
-static const int  FAN_PWM_PIN    = 10;
+// static const int  FAN_PWM_PIN = 18;
+#if defined(ARDUINO_ESP32C3_DEV)
+  static const int  FAN_PWM_PIN = 10;
+#else
+  static const int  FAN_PWM_PIN = 18;
+#endif
+
 static const int  LEDC_CHANNEL   = 0;
+// int pwmChannel = -1;
 static const int  LEDC_TIMER     = 0;
 static const uint32_t PWM_FREQ_HZ = 25000;
+// static const uint32_t PWM_FREQ_HZ = 200;
 static const uint8_t  PWM_RES_BITS = 10;
 
 static const int PCT_MIN_START = 25;
@@ -361,12 +369,22 @@ int invertDuty(int duty) {
   return DUTY_MAX - constrain(duty, 0, DUTY_MAX);
 }
 
+// void writeDutyActiveLow(int dutyActiveHigh) {
+//   int dutyActiveLow = invertDuty(dutyActiveHigh);
+//   ledcWrite(pwmChannel, dutyActiveLow);
+//   currentDuty = dutyActiveHigh;
+// }
+
 void writeDutyActiveLow(int dutyActiveHigh) {
   int dutyActiveLow = invertDuty(dutyActiveHigh);
-  ledcWrite(LEDC_CHANNEL, dutyActiveLow);
+#if defined(ARDUINO_ESP32C3_DEV)
+  ledcWrite(LEDC_CHANNEL, dutyActiveLow);      // C3 舊 API：用 channel
+#else
+  ledcWrite(FAN_PWM_PIN, dutyActiveLow);     // C6 新 API：用 pin
+#endif
   currentDuty = dutyActiveHigh;
 }
-
+ 
 // ========= MQTT‑aware publishers =========
 void publishStateFromDuty(int dutyActiveHigh) {
   if (!currentConfig.mqtt_enabled) return; // MQTT disabled => no publish
@@ -923,6 +941,7 @@ void setup() {
   } else {
     handleFanSpeed(0);
   }
+
 }
 
 void loop() {
@@ -959,4 +978,5 @@ void loop() {
   }
   ArduinoOTA.handle();
   delay(2);
+
 }

@@ -41,7 +41,7 @@ All configuration parameters (WiFi credentials, MQTT server details, MQTT userna
 ### Accessing the Configuration Portal
 
 1.  **Automatic**: If the ESP32 cannot connect to a saved WiFi network, it will create an Access Point (AP) named "BambuFanAP" with the password "password". Connect to this AP with your phone or computer.
-2.  **Manual**: Access the web control interface (once connected to WiFi) and click the "Reconfigure WiFi/MQTT" button.
+2.  **Manual**: Access the web control interface (once connected to WiFi) and click the "Reconfigure WiFi/MQTT" button. If the captive portal does not open automatically after connecting to the ESP32 access point, open `http://192.168.4.1` in your web browser.
 
 Once connected to the AP, a captive portal should automatically open in your browser, allowing you to set:
 
@@ -76,3 +76,35 @@ The fan's current state (duty cycle and percentage) will be published to `TOPIC_
 ## OTA (Over-The-Air) Updates
 
 The device supports OTA updates. Ensure that `upload_protocol = espota` and `upload_port` are correctly configured in `platformio.ini` (e.g., `upload_port = 192.168.2.161`). The hostname for OTA is set to `esp32`.
+
+## Manufacturing information
+
+*   **`image/`**: Contains images related to the project.
+    *   `pcb_layout.jpg`: A layout image of the PCB.
+    *   `fan_control_box.jpg`: A cutout image of the fan's mechanical components.
+    *   `fan.jpg`: A photo of the fan.
+    *   `filter.jpg`: A photo of the filter.
+*   **`PCB/`**: Contains the Gerber files for the fan control PCB board.
+*   **`SolidWorks/`**: Contains the SolidWorks 3D design files for the fan's mechanical components.
+
+
+## PCB Design
+
+![PCB Layout](image/pcb_layout.jpg)
+
+The PCB layout can be viewed and edited online: [PCB Layout Editor - EasyEDA](https://pro.easyeda.com/editor#id=c79e3e0623a544f8a684775a9b8ccbd5,tab=*d06ea5cc8f37423995d957d8589f9b6b@c79e3e0623a544f8a684775a9b8ccbd5)
+
+## Mechanical Design
+
+![Fan Control Box](image/fan_control_box.jpg)
+
+
+## Fan
+
+![Fan](image/fan.jpg)
+[淘寶](https://detail.tmall.com/item.htm?_u=e27molsp8e04&id=695868124936&pisk=gPW4MBxJc-eVITu7hapZ4ZLG-7pvpdzQSOT6jGjMcEY06nwiQGSHfoUTD_-G5aETDKsM7N7WyAt_MPHNzZshGI_1GFxMrajjhFwv_NSCJNM_HstiQas9sN6NXA-GjNEv5oF5Dip9IyaBQJsADOXERhX2m02l2h3Mj7Omg8SbVyaQdRPmqdz4RNZHlmSJYHvMmCDmqu-6AnxcSImlqUK9jqxinuSkyUxmsnYMrLx60VxcSh2oEnKISnAMS8YkYUYMIIvg4gYJbdYGSdqPqbRHSeMyYIqy2I7kRWd6gejDzvSdUnAnMi8rpv6PuLTndUkiIT-VbwlEevP6-6LXOeQuFxJNqh7yOszE3NSGv1APQqqf-GbAUKpU1odFZ_1Bg_zmQU6XbBvMacDG4L8R8T93K4-RZi1GHZoZInBfdC8palD91LXBt6bqXkIknhb99OaKHEjGv9CBL-up0_jeUgJiW3ArtOCqSfRD238Q4u8yvgf9OzwdMfh9M_KyRoEx6fdD238Q4ult6IpJ4eZYD&spm=a1z09.2.0.0.74db2e8dWnqHse)
+
+## Filter
+
+![Filter](image/filter.jpg)
+[淘寶](https://item.taobao.com/item.htm?_u=e27molspc9eb&id=895551373211&pisk=gdt7G5mLp7V5J6YOPMk4l3XxC3sBOxoZvJ6pIpEzpgIRRkpy19rF84XQAs9tE_unrBTX9IbPw67FA9ONiLrEELkIAppOwM8Pa9d2OI4yaH5egD9M1arypHykoCJT43ulYkslxMhZ_cowULjhv3YubwFlH9BKYkQdygjY__wrWcowEKwPeAJxbHzgJ3W0JkddyZFAEsB8JaQ-hZBCBMERJuUYMsXdvMQRpoBAp968ekQ-h-BPCzURy_FAM96CeMIp9KHfKsBRvMdpHx6nBmhfn41JFAniKW9nKWLfGkEpcthl_LNuxtK5FTC6eKwuEvX5P1pRGbF79zbvKwt3Kk_eeFAhBQF-O6xXH3L96jzPwF6BQeOtLzXVR3jf93ngCsKWdn_ku7URCg15W3Q7QAvlJEtf43h3SKJfwNs2uqcP8gOWS1b-ojABh_RpVZFSg68w33QX6jrXtwTp4iK-McsPil5slI4QhNqCh1kjhy438zYW4V7qltbRnt-ZhxN7-aBch1kjhy4hytXV7xMbNyf..&spm=a1z09.2.0.0.74db2e8dWnqHse&skuId=5747471645091)
